@@ -44,16 +44,16 @@ class Express
             throw new InvalidArgumentException('Unsupported Type');
         }
 
-        $this->type = $type;
-        $this->app_id = $app_id;
+        $this->type    = $type;
+        $this->app_id  = $app_id;
         $this->app_key = $app_key;
     }
 
     /**
      * 查询物流
      *
-     * @param $tracking_code
-     * @param $shipping_code
+     * @param       $tracking_code
+     * @param       $shipping_code
      * @param array $additional
      *
      * @return array

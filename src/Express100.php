@@ -34,7 +34,7 @@ class Express100
      */
     public function __construct($app_id, $app_key)
     {
-        $this->app_id = $app_id;
+        $this->app_id  = $app_id;
         $this->app_key = $app_key;
     }
 
@@ -71,7 +71,7 @@ class Express100
         }
 
         $post['customer'] = $this->app_id;
-        $data = [
+        $data             = [
             'com' => $shipping_code,
             'num' => $tracking_code,
         ];
@@ -81,7 +81,7 @@ class Express100
         }
 
         $post['param'] = json_encode($data);
-        $post['sign'] = strtoupper(md5($post['param'].$this->app_key.$post['customer']));
+        $post['sign']  = strtoupper(md5($post['param'] . $this->app_key . $post['customer']));
 
         try {
             $response = $this->getHttpClient()->request('POST', $this->api, [
