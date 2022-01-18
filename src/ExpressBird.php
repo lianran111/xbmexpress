@@ -44,13 +44,14 @@ class ExpressBird
      * @param string $tracking_code 快递单号
      * @param string $shipping_code 物流公司编号
      * @param string $order_code 订单编号(选填)
+     * @param string $customer_name ShipperCode为SF时必填，对应寄件人/收件人手机号后四位(选填)
      *
      * @return string
      *
      * @throws InvalidArgumentException
      * @throws HttpException
      */
-    public function track($tracking_code = '', $shipping_code = '', $order_code = '')
+    public function track($tracking_code = '', $shipping_code = '', $order_code = '', $customer_name = '')
     {
         if (empty($tracking_code)) {
             throw new InvalidArgumentException('TrackingCode is required');
@@ -106,6 +107,7 @@ class ExpressBird
             'LogisticCode' => $tracking_code,
             'ShipperCode'  => $shipping_code,
             'OrderCode'    => $order_code,
+            'CustomerName' => $customer_name,
         ];
         $requestData = json_encode($requestData);
 
